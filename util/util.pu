@@ -1,0 +1,53 @@
+@startuml utility
+
+' Procedures
+
+!startsub util_proc
+
+!procedure req(name,txt,label)
+class "name" as label <<requirement>> {
+txt
+}
+!endprocedure
+
+!procedure freq(name,txt,label)
+class "name" as label <<functionalRequirement>> {
+txt
+}
+!endprocedure
+
+!procedure dcnstr(name,txt,label)
+class "name" as label <<designConstraint>> {
+txt
+}
+!endprocedure
+
+!procedure block(name,txt,label)
+class "name" as label <<block>> {
+txt
+}
+!endprocedure
+
+!procedure part(txt,label)
+!endprocedure
+
+!endsub
+
+
+' Connections
+
+!startsub util_connection
+
+!define nest(x,y) x +-- y
+!define derive(x,y) x <.. y : <<deriveReqt>>
+!define refine(x,y) x <.. y : <<refine>>
+!define trace(x,y) x <.. y : <<trace>>
+!define satisfy(x,y) x <.. y : <<satisfy>>
+!define derivel(x,y) x <.. y : <<deriveReqt>> link
+
+
+!endsub
+
+title utility
+
+@enduml

@@ -1,0 +1,69 @@
+@startuml sequence
+skinparam actorStyle awesome
+
+actor User as user
+participant base_controller as ctrl
+participant electrical_motor as motor
+participant heater
+participant "in\nwater_valve" as iwv
+participant "out\nwater_valve" as owv
+participant pump
+
+user --> ctrl : プログラムを選択する
+activate ctrl
+
+ctrl --> iwv : 洗浄液の準備をする
+activate iwv
+
+ctrl -> motor : ドラムを回転させる
+deactivate iwv
+activate motor
+
+ctrl -> heater : 洗浄液を加熱する
+deactivate motor
+activate heater
+
+ctrl -> owv : 洗浄液を排水する
+deactivate heater
+activate owv
+
+ctrl -> motor : ドラムを回転させる
+deactivate owv
+activate motor
+
+ctrl -> pump : 洗浄液をポンプでは排出する
+deactivate motor
+activate pump
+
+ctrl -> iwv : リンスを投入する
+deactivate pump
+activate iwv
+
+ctrl -> motor : ドラムを回転させる
+deactivate iwv
+activate motor
+
+ctrl -> heater : 水を加熱する
+deactivate motor
+activate heater
+
+ctrl -> owv : 排水する
+deactivate heater
+activate owv
+
+ctrl -> motor : ドラムを回転させる
+deactivate owv
+activate motor
+
+ctrl -> pump : ポンプで排水する
+deactivate motor
+activate pump
+
+ctrl -> user : プログラム終了
+deactivate pump
+deactivate ctrl
+activate user
+
+@enduml
+
+

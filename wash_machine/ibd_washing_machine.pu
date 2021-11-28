@@ -1,0 +1,28 @@
+@startuml ibd
+
+hide circle
+hide empty members
+hide method
+
+!includesub name.pu!req
+!includesub ../util/util.pu!util_proc
+!includesub ../util/util.pu!util_connection
+
+package "ibd washing machine" {
+    [co: controller] as co
+    [d: drivetrain] as d
+    [wp: washing parts] as wp
+    [fr: frame] as fr
+    [wh: water circulation and heating] as wh
+}
+
+co "co_d" #--# "co_d" d : Information >
+co "co_wh" #--# "co_wh" wh : Information >
+co -- fr
+fr -- wh
+fr -- d
+fr -- wp
+d #--# wp : Torque >
+wp #--# wh : Water
+
+@enduml

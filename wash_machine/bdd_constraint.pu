@@ -1,0 +1,20 @@
+@startuml bdd_constraint
+
+hide circle
+hide empty members
+hide method
+
+!includesub name.pu!req
+!includesub ../util/util.pu!util_proc
+!includesub ../util/util.pu!util_connection
+
+package "bdd constraint" {
+    
+card energy {
+
+}
+
+}
+
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml requirement
+
+hide circle
+hide empty members
+hide method
+
+!includesub name.pu!req
+!includesub ../util/util.pu!util_proc
+!includesub ../util/util.pu!util_connection
+
+title 洗濯機の要求図
+
+package "req 要求図" {
+    req(REQ1,"build-in dimensions",const)
+    req(REQ2,"front- or toploader",door)
+    req(REQ3,"capacity of the drum",drum)
+    req(REQ4,"with/without dryer",dryer)
+    req(REQ5,"range: 350-400 euro",cost)
+    req(REQ6,"temperature, rotational speed, ...",spec)
+    req(REQ7,"water and power consumption",eff)
+    req(REQ8,"noise, safety",env)
+    req(REQ9,"level of cleanness",quality)
+    class controller #Salmon
+}
+
+nest(const,door)
+nest(const,drum)
+nest(const,dryer)
+
+derive(cost,const)
+derive(cost,spec)
+derive(cost,env)
+
+derive(spec,quality)
+derive(spec,eff)
+
+trace(spec,const)
+
+satisfy(spec,controller)
+
+
+@enduml

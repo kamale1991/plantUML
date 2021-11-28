@@ -1,0 +1,19 @@
+@startuml name
+
+!startsub req
+
+!define REQ1 "type of construction"
+!define REQ2 "door alignment"
+!define REQ3 "dimensions"
+!define REQ4 "dryer"
+!define REQ5 "price range"
+!define REQ6 "specifications"
+!define REQ7 "efficiency"
+!define REQ8 "environmental aspects"
+!define REQ9 "washing quality"
+
+!endsub
+
+title name
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml structure
+
+hide circle
+hide empty members
+hide method
+
+!includesub name.pu!req
+!includesub ../util/util.pu!util_proc
+!includesub ../util/util.pu!util_connection
+
+package "bdd Structure" {
+    block("washing machine","",machine)
+    block("frame","do: door\nfp: frame parts",frame)
+    block("controller","bc: base controller\ncp: control panel",controller)
+    block("drivetrain","bd: belt drive\nem: electrical motor",drivetrain)
+    block("water circulation and heating","he: heater\nin: water valve\nout: water valve\npu: pump",circulator)
+    block("washing parts","dr: drum\ntu: tub",wash)
+}
+
+machine *--> frame
+machine *--> controller
+machine *--> drivetrain
+machine *--> circulator
+machine *--> wash
+
+@enduml

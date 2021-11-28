@@ -1,0 +1,17 @@
+@startuml usecase
+skinparam actorStyle awesome
+
+package washing_machine {
+(Using WM) as uwm
+
+(Washing laundry) as wl
+
+(Drying laundry) as dl
+}
+
+:User: -- uwm
+
+wl --> uwm
+dl --> uwm
+
+@enduml
